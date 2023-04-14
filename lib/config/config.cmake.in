@@ -1,0 +1,38 @@
+if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 3.10)
+   message(FATAL_ERROR "[@PROJECT_ID@] CMake >= 3.10.0 required")
+endif()
+
+@CMAKE_CONFIG_FIND_PACKAGES@
+
+if (NOT TARGET @PROJECT_ID@::@CMAKE_CONFIG_LIBRARY_NAME@)
+    add_library (@CMAKE_CONFIG_LIBRARY_NAME@_interface INTERFACE)
+    add_library (@PROJECT_ID@::@CMAKE_CONFIG_LIBRARY_NAME@ ALIAS @CMAKE_CONFIG_LIBRARY_NAME@_interface)
+
+    target_include_directories (
+        @CMAKE_CONFIG_LIBRARY_NAME@_interface INTERFACE
+        @CMAKE_INSTALL_PREFIX@/@CMAKE_CONFIG_INCLUDEDIR@
+    )
+
+    target_link_directories (
+        @CMAKE_CONFIG_LIBRARY_NAME@_interface INTERFACE
+        @CMAKE_INSTALL_PREFIX@/@CMAKE_CONFIG_LIBDIR@
+    )
+
+    target_link_libraries (
+        @CMAKE_CONFIG_LIBRARY_NAME@_interface INTERFACE
+        @CMAKE_CONFIG_DEP_TARGETS@
+        @CMAKE_CONFIG_LIBRARY_NAME@
+    )
+
+    target_compile_options (
+        @CMAKE_CONFIG_LIBRARY_NAME@_interface INTERFACE
+        @CMAKE_CONFIG_CFLAGS@
+    )
+
+    target_link_options (
+        @CMAKE_CONFIG_LIBRARY_NAME@_interface INTERFACE
+        @CMAKE_CONFIG_LIBS@
+    )
+endif ()
+
+set (@CMAKE_CONFIG_LIBRARY_NAME@_LIBRARIES @PROJECT_ID@::@CMAKE_CONFIG_LIBRARY_NAME@)
