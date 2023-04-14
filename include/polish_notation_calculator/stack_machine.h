@@ -13,8 +13,7 @@
 POLISH_NOTATION_CALCULATOR_BEGIN_NAMESPACE
 
 struct stack_machine
-{   
-    std::int64_t execute_oper(std::int64_t oper);
+{
     std::int64_t execute(const std::string& calculation);
 
     static void op_add(stack_machine& self);

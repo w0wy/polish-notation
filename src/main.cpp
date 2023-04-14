@@ -12,7 +12,8 @@ int main(int, char *[])
 
 		polish_notation_calculator::stack_machine sm;
 
-		std::cout << "\nResult: " << sm.execute(calculation) << "\n";
+		const auto result = sm.execute(calculation);
+		std::cout << "\nResult: " << result << "\n";
 	}
 
     return 0;
