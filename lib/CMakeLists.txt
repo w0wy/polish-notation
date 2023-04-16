@@ -19,10 +19,6 @@ string (
 target_sources(
     ${${PROJECT_ID}_LIBRARY_NAME} PRIVATE
     stack_machine.cpp
-    op_add.cpp
-    op_div.cpp
-    op_mul.cpp
-    op_sub.cpp
 )
 
 set (CONFIG_HH_PATH "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_ID}/config.h")

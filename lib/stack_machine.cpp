@@ -5,6 +5,11 @@
 
 POLISH_NOTATION_CALCULATOR_BEGIN_NAMESPACE
 
+IMPL_OPERATION(add, +)
+IMPL_OPERATION(sub, -)
+IMPL_OPERATION(div, /)
+IMPL_OPERATION(mul, *)
+
 template<typename Numeric>
 bool is_number(const std::string& s)
 {
@@ -72,6 +77,5 @@ void stack_machine::reset()
     m_faulted = false;
     m_stack = std::stack<operand_t>{};
 }
-
 
 POLISH_NOTATION_CALCULATOR_END_NAMESPACE
