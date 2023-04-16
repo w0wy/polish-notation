@@ -28,7 +28,11 @@ public:
     static void op_div(stack_machine& self);
 
 private:
-    std::stack<operand_t> m_stack;
+    void reset();
+
+private:
+    std::stack<operand_t> m_stack{};
+    bool m_faulted{false};
 
     const std::unordered_map<operator_t, void(*)(stack_machine&)> m_opers{
         {'+', &stack_machine::op_add},

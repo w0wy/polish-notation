@@ -6,7 +6,8 @@ void stack_machine::op_div(stack_machine& self)
 {   
     if (self.m_stack.size() < 2)
     {
-        std::cout << "Failed. There are less than 2 operands!";
+        self.m_faulted = true;
+        return;
     }
 
     const auto lhs = self.m_stack.top();

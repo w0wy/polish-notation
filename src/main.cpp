@@ -11,17 +11,21 @@ void signal_handler(int signum)
 
 int main(int, char *[])
 {
+	std::cout << "\nYou can use expressions \"quit\", \"exit\" or directly CTRL+C to exit!\n";
+
 	signal(SIGINT, signal_handler);
 
-	polish_notation_calculator::stack_machine sm;
-
+	auto sm = polish_notation_calculator::stack_machine{};
 	while(true)
 	{
-		std::cout << "\nAdd your calculation:\n";
-		auto calculation = std::string{};
-		std::getline(std::cin, calculation);
+		std::cout << "\nAdd your expression:\n";
+		auto expression = std::string{};
+		std::getline(std::cin, expression);
 
-		std::stringstream ss(calculation);
+		if (expression == "quit")
+			signal_handler(1);
+
+		std::stringstream ss(expression);
     	std::istream_iterator<std::string> begin(ss);
     	std::istream_iterator<std::string> end;
     	std::vector<std::string> vstrings(begin, end);
