@@ -62,8 +62,8 @@ target_link_libraries (
     ${${PROJECT_ID}_LIBRARY_NAME}
     PUBLIC
         ${PROJECT_ID}::PublicHeaders
-    PRIVATE
-        ${PROJECT_ID}::PrivateHeaders
+    PUBLIC
+        ${PROJECT_ID}::Expected
     PRIVATE
         $<BUILD_INTERFACE:${PROJECT_ID}::Options>
         $<BUILD_INTERFACE:${PROJECT_ID}::Warnings>

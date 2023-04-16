@@ -16,7 +16,7 @@ set_property (TARGET ${${PROJECT_ID}_TEST_EXECUTABLE} PROPERTY CXX_STANDARD_REQU
 
 target_sources (
     ${${PROJECT_ID}_TEST_EXECUTABLE} PUBLIC
-    main.cc
+    main.cpp
 )
 
 target_compile_definitions (

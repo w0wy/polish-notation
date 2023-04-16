@@ -69,6 +69,7 @@ add_library (${PROJECT_ID}::Warnings ALIAS ${PROJECT_ID}_warnings)
 
 set_project_warnings (${PROJECT_ID}_warnings)
 
+add_subdirectory (3rdparty)
 add_subdirectory (include)
 add_subdirectory (lib)
 add_subdirectory (src)
